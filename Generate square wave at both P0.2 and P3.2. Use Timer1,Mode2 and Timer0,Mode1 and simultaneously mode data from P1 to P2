@@ -1,4 +1,4 @@
-//Generate square wave at both P0.2 and P3.2. Use Timer1,Mode2 and Timer0,Mode1
+//Generate square wave at both P0.2 and P3.2. Use Timer1,Mode2 and Timer0,Mode1 and simultaneously mode data from P1 to P2
 ORG 0H
 LJMP MAIN
 ORG 200H
