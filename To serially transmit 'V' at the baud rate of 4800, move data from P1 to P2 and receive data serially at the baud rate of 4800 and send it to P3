@@ -1,0 +1,25 @@
+//To serially transmit 'V' at the baud rate of 4800, move data from P1 to P2 and receive data serially at the baud rate of 4800 and send it to P3
+ORG 0H
+LJMP MAIN
+ORG 300H
+MAIN: MOV P1,#0FFH
+MOV P2,#00H
+MOV P3,#00H
+MOV TMOD,#20H
+MOV TH1,#-6
+SETB TR1
+MOV SCON,#50H
+SETB EA
+SETB ES
+SETB TI
+REP: MOV P2,P1
+SJMP REP
+ORG 23H
+JNB TI,REC
+CLR TI
+MOV SBUF,#'V'
+RETI
+REC: CLR RI
+MOV P3,SBUF
+RETI
+END
