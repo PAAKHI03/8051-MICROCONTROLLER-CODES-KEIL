@@ -1,0 +1,18 @@
+//Generation of Square Wave on Port 2 with some delay using Timers in mode 1
+ORG 0H
+MOV TMOD,#10H
+MOV P2,#00H
+REP: MOV P2,#0FFH
+ACALL DELAY
+MOV P2,#00H
+ACALL DELAY
+SJMP REP
+DELAY:
+MOV TH1,#00H
+MOV TL1,#00H
+SETB TR1
+L1: JNB TF1,L1
+CLR TF1
+CLR TR1
+RET
+END
