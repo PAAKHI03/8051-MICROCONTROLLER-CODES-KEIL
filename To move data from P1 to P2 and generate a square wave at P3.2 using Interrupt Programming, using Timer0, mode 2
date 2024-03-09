@@ -1,0 +1,19 @@
+//To move data from P1 to P2 and generate a square wave at P3.2 using Interrupt Programming, using Timer0, mode 2
+ORG 0H
+LJMP MAIN
+ORG 200H
+MAIN: MOV P1,#0FFH
+MOV P2,#00H
+CLR P3.2
+MOV TMOD,#02H
+MOV TH0,#8DH
+SETB TR0
+SETB IE.7
+SETB IE.1
+REP: MOV A,P1
+MOV P2,A
+SJMP REP
+ORG 0BH
+CPL P3.2
+RETI 
+END
