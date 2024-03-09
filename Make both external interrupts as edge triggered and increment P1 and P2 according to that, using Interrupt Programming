@@ -1,0 +1,19 @@
+//Make both external interrupts as edge triggered and increment P1 and P2 according to that, using Interrupt Programming
+ORG 0H
+LJMP MAIN
+ORG 300H
+MAIN: MOV P1,#00H
+MOV P2,#00H
+SETB IT0
+SETB IT1
+SETB EA
+SETB EX0
+SETB EX1
+HERE: SJMP HERE
+ORG 03H
+INC P1
+RETI
+ORG 13H
+INC P2
+RETI
+END
