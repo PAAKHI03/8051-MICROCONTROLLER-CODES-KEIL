@@ -1,0 +1,43 @@
+//Creating a database in ROM, adding all the numbers and storing the result in a register in RAM a) Single byte addition b) Multi-byte addition
+a)	ORG 200H
+DB 10H, 20H
+ORG 0H
+MOV R7,#2
+MOV DPTR, #200H
+LOOP: CLR A
+MOVC A,@A+DPTR
+ADD A,R2
+JNC L1
+INC R6
+L1: INC DPTR
+MOV R2,A
+DJNZ R7,LOOP
+HERE:SJMP HERE
+END
+
+b)	ORG 200H
+DB 10H,20H,30H,40H
+
+ORG 0H
+MOV DPTR, #200H
+MOV A,#01H
+MOVC A,@A+DPTR
+MOV R2,A
+MOV A,#03H
+MOVC A,@A+DPTR
+ADD A,R2
+JNC L1
+INC R7
+L1:MOV R2,A
+MOV A,#02H
+MOVC A,@A+DPTR
+MOV R1,A
+CLR A
+MOVC A,@A+DPTR
+ADD A,R1
+ADD A,R7
+JNC L2
+INC R0
+L2:MOV R1,A
+HERE:SJMP HERE
+END
