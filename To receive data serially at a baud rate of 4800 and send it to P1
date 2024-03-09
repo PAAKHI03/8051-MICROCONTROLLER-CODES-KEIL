@@ -1,0 +1,12 @@
+//To receive data serially at a baud rate of 4800 and send it to P1
+ORG 0H
+MOV TMOD,#20H
+MOV TH1,#-6
+SETB TR1
+MOV SCON,#50H
+MOV P1,#00H
+WAIT: JNB RI,WAIT
+CLR RI
+MOV P1,SBUF
+SJMP WAIT
+END
