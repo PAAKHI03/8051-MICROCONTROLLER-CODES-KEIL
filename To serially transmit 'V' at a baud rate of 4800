@@ -1,0 +1,11 @@
+//To serially transmit 'V' at a baud rate of 4800
+ORG 0H
+MOV TMOD,#20H
+MOV TH1,#-6
+SETB TR1
+MOV SCON,#50H
+MOV A,#'V'
+MOV SBUF,A
+STAY: JNB TI,STAY
+CLR TI
+END
