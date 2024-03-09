@@ -1,0 +1,7 @@
+//To send data from P1 to P2
+ORG 0H
+MOV P1,#0FFH
+MOV P2,#00H
+MOV P1,#55H
+MOV P2,P1
+END
