@@ -1,0 +1,24 @@
+//Write a program to find the average age of a group of children in a class. There are 12 children, ranging in age from 5 to 10 years old. pick your own data. Notice that you must first bring the data from ROM space into the CPU's RAM and then add them together
+ORG 200H
+DB 5,7,5,7,5,7,5,7,5,7,5,7
+ORG 0H
+MOV DPTR,#200H
+MOV R7,#12
+MOV R0,#50H
+REP: CLR A
+MOVC A,@A+DPTR
+MOV @R0,A
+INC R0
+INC DPTR
+DJNZ R7,REP
+CLR A
+MOV R7,#12
+MOV R1,#50H
+ADDITION:
+ADD A,@R1
+INC R1
+DJNZ R7,ADDITION 
+MOV B,#12
+DIV AB
+HERE:SJMP HERE
+END
