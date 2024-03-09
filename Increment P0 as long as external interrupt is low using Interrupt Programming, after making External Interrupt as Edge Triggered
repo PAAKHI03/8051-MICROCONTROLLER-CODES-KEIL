@@ -1,0 +1,13 @@
+//Increment P0 as long as external interrupt is low using Interrupt Programming, after making External Interrupt as Edge Triggered
+ORG 0H
+LJMP MAIN
+ORG 300H
+MAIN: MOV P0,#00H
+SETB IT0
+SETB EA
+SETB EX0
+HERE: SJMP HERE
+ORG 03H
+INC P0
+RETI
+END            
