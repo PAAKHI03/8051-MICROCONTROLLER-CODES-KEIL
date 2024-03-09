@@ -1,0 +1,13 @@
+//ALP to examine stack operation. Use of PUSH and POP instructions
+ORG 0H
+MOV R1,#10H
+MOV R2,#20H
+MOV R3,#30H
+PUSH 1
+PUSH 2
+PUSH 3
+POP 1
+POP 2
+POP 3
+HERE: SJMP HERE
+END
