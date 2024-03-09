@@ -1,0 +1,17 @@
+//To realise a quadratic equation using database in ROM
+ORG 200H
+DB 10H, 20H, 30H, 40H, 50H, 60H, 70H, 80H, 90H, 00H
+ORG 00H
+MOV DPTR, #200H
+MOV A, #03H
+MOV R1,A
+MOV R0,A
+ADDC A,R1
+MOV R1,A
+MOV A,R0
+MOVC A,@A+DPTR
+ADDC A,#09H
+ADDC A,R1
+MOV R2,A
+HERE: SJMP HERE
+END
