@@ -1,0 +1,17 @@
+//Generation of Square Wave on a Port Pin with some delay using Timers in mode 2
+ORG 0H
+MOV TMOD,#20H
+MOV TH1,#0A3H
+CLR P1.5
+REP: SETB P1.5
+ACALL DELAY
+CLR P1.5
+ACALL DELAY
+SJMP REP
+DELAY:
+SETB TR1
+L1: JNB TF1,L1
+CLR TF1
+CLR TR1
+RET 
+END
